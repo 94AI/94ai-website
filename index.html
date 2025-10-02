@@ -54,7 +54,6 @@
             height: 40px;
             overflow: hidden; 
         }
-        /* LOGO 圖片路徑修正為專案絕對路徑 */
         header .logo-link img {
             height: 60px; 
             margin-top: -10px; 
@@ -87,80 +86,94 @@
             text-shadow: 0 0 8px var(--color-hero-red);
         }
 
-        /* --- 英雄形象區塊 (Hero) --- */
+        /* --- 首頁區塊 (Hero Section) --- */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://placehold.co/1200x600/0056B3/FFD700?text=PLUS+ULTRA+BANNER') no-repeat center center/cover;
-            color: white;
-            padding: 100px 20px;
             text-align: center;
-            border-bottom: 5px solid var(--color-hero-yellow);
+            padding: 120px 20px; 
+            background-color: var(--color-hero-blue); 
+            color: var(--color-hero-yellow);
+            box-shadow: inset 0 -10px 20px rgba(255, 215, 0, 0.4); 
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+            border-bottom: 5px solid var(--color-hero-red);
         }
         .hero h1 {
-            font-size: 3.5rem;
-            color: var(--color-hero-yellow);
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-            margin-bottom: 20px;
+            font-size: 3.8rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px var(--color-hero-yellow); 
         }
         .hero p {
             font-size: 1.5rem;
-            color: var(--color-text-light);
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            color: #fff;
+            opacity: 0.9;
         }
         .cta-button {
             display: inline-block;
             background-color: var(--color-hero-red); 
-            color: white;
-            padding: 15px 40px;
+            color: var(--color-hero-yellow); 
+            padding: 18px 50px;
             text-decoration: none;
             border-radius: 8px;
             font-weight: 900;
             font-size: 1.2rem;
             transition: background-color 0.3s, box-shadow 0.3s;
-            box-shadow: 0 0 10px var(--color-hero-red);
+            box-shadow: 0 0 20px var(--color-hero-red); 
+            border: 2px solid var(--color-hero-yellow);
         }
         .cta-button:hover {
             background-color: #ff3333;
-            box-shadow: 0 0 20px var(--color-hero-yellow);
+            box-shadow: 0 0 40px var(--color-hero-red); 
+            transform: scale(1.05);
         }
 
-        /* --- 內容區塊 (Cards) --- */
+        /* --- 內容區塊 (Card Layout) --- */
         .content-section {
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
         }
         .content-section h2 {
-            font-size: 2.5rem;
-            color: var(--color-hero-blue);
-            text-shadow: 0 0 10px var(--color-hero-blue);
-            margin-bottom: 50px;
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            color: var(--color-hero-yellow); 
+            text-shadow: 0 0 10px var(--color-hero-yellow);
+            border-bottom: 2px solid var(--color-hero-red);
+            display: inline-block;
+            padding-bottom: 5px;
         }
-        .cards {
+        .content-section .cards {
             display: flex;
-            justify-content: space-between;
-            gap: 20px;
+            justify-content: space-around;
+            flex-wrap: wrap;
             margin-top: 30px;
         }
-        .card {
+        .content-section .card {
             background-color: var(--color-card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            flex: 1;
-            box-shadow: 0 0 15px rgba(0, 86, 179, 0.5);
+            padding: 35px;
+            margin: 20px;
+            border-radius: 8px;
+            border: 2px solid var(--color-hero-blue);
+            box-shadow: 0 0 20px rgba(0, 86, 179, 0.5); 
+            flex-basis: calc(33% - 40px); 
+            box-sizing: border-box;
             transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 4px solid var(--color-hero-yellow);
         }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 86, 179, 0.8);
+        .content-section .card:hover {
+            transform: translateY(-10px); 
+            box-shadow: 0 0 40px var(--color-hero-yellow); 
         }
         .card h3 {
-            color: var(--color-hero-yellow);
+            color: var(--color-hero-red); 
             font-size: 1.8rem;
-            border-bottom: 2px dashed rgba(255, 215, 0, 0.5);
-            padding-bottom: 10px;
+            margin-top: 0;
+            text-shadow: 0 0 5px var(--color-hero-red);
         }
         .card p {
             color: #ccc;
+            /* 設置固定高度，強制所有卡片內容區塊高度一致 */
+            min-height: 48px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
         }
 
         /* --- 頁尾 (Footer) --- */
@@ -179,12 +192,6 @@
 
         /* --- 響應式設計 (RWD for Mobile) --- */
         @media (max-width: 768px) {
-            .hero {
-                padding: 60px 20px;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
             header nav {
                 flex-direction: column;
             }
@@ -194,27 +201,40 @@
             header nav ul li {
                 margin: 0 10px;
             }
-            .cards {
-                flex-direction: column;
+            header nav ul li a {
+                font-size: 1rem; 
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .content-section .card {
+                flex-basis: 100%;
+            }
+            .card p {
+                min-height: auto;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 導覽列：分頁名稱已更新為四字對齊 -->
     <header>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo-link">
-                    <!-- LOGO 路徑修正 -->
+                <a href="/94ai-website/index.html" class="logo-link">
+                    <!-- LOGO 路徑修正為專案絕對路徑 -->
                     <img src="/94ai-website/images/plus_ultra_logo.png" alt="94AI PLUS ULTRA Logo"> 
                 </a>
                 <ul>
                     <!-- 1. 首頁：領域展開 -->
-                    <li><a href="index.html">領域展開</a></li>
-                    <!-- 2. 部落格/內容：特級咒物 -->
-                    <li><a href="blog.html">特級咒物</a></li> 
-                    <!-- 3. 聯絡/關於我們：公安九課 -->
-                    <li><a href="contact.html">咒力傳輸</a></li> 
+                    <li><a href="/94ai-website/index.html">領域展開</a></li>
+                    <!-- 2. 內容頁：特級咒物 -->
+                    <li><a href="/9ai-website/blog.html">特級咒物</a></li> 
+                    <!-- 3. 聯絡/關於我們：咒力傳輸 -->
+                    <li><a href="/94ai-website/contact.html">咒力傳輸</a></li> 
                 </ul>
             </nav>
         </div>
@@ -226,7 +246,7 @@
                 <h1>你就是下一個英雄！PLUS ULTRA！</h1>
                 <p>94AI 繼承時代的力量，為你傳授最先進的智能個性 (AI Quirk) 與技術訓練！</p>
                 <!-- CTA 按鈕指向特級咒物 -->
-                <a href="blog.html" class="cta-button">去吧！英雄訓練！</a> 
+                <a href="/94ai-website/blog.html" class="cta-button">去吧！英雄訓練！</a> 
             </div>
         </section>
 
