@@ -193,13 +193,14 @@
     <header>
         <div class="container">
             <nav>
-                <a href="index.html" class="logo-link">
-                    <img src="images/plus_ultra_logo.png" alt="94AI PLUS ULTRA Logo"> 
+                <a href="/94ai-website/index.html" class="logo-link">
+                    <!-- LOGO 路徑修正為專案絕對路徑 -->
+                    <img src="/94ai-website/images/plus_ultra_logo.png" alt="94AI PLUS ULTRA Logo"> 
                 </a>
                 <ul>
-                    <li><a href="index.html">領域展開</a></li>
-                    <li><a href="blog.html">特級咒物</a></li> 
-                    <li><a href="contact.html">咒力傳輸</a></li> 
+                    <li><a href="/94ai-website/index.html">領域展開</a></li>
+                    <li><a href="/94ai-website/blog.html">特級咒物</a></li> 
+                    <li><a href="/94ai-website/contact.html">咒力傳輸</a></li> 
                 </ul>
             </nav>
         </div>
@@ -214,8 +215,8 @@
 
                 <div class="tabs">
                     <!-- Tab 按鈕 -->
-                    <button class="tab-button active" onclick="showContent('articles')">咒物情報 (文章)</button>
-                    <button class="tab-button" onclick="showContent('tools')">戰鬥術式 (工具)</button>
+                    <button class="tab-button active" onclick="showContent(event, 'articles')">咒物情報 (文章)</button>
+                    <button class="tab-button" onclick="showContent(event, 'tools')">戰鬥術式 (工具)</button>
                 </div>
 
                 <!-- 內容區塊 -->
@@ -259,7 +260,8 @@
 
     <script>
         // JavaScript 實現 Tab 內容切換
-        function showContent(contentId) {
+        // 修正了參數傳遞錯誤，使用 event.currentTarget
+        function showContent(event, contentId) {
             // 隱藏所有內容
             document.getElementById('articles').style.display = 'none';
             document.getElementById('tools').style.display = 'none';
@@ -273,6 +275,16 @@
             });
             event.currentTarget.classList.add('active');
         }
+
+        // 預設啟動 Tab 按鈕的 active 狀態
+        document.addEventListener('DOMContentLoaded', () => {
+            const defaultButton = document.querySelector('.tab-button.active');
+            if (defaultButton) {
+                // 確保預設的 Tab 內容是顯示的
+                const defaultContentId = defaultButton.getAttribute('onclick').match(/'([^']*)'/)[1];
+                document.getElementById(defaultContentId).style.display = 'block';
+            }
+        });
     </script>
 </body>
 </html>
